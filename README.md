@@ -36,7 +36,7 @@ This process includes 5-fold cross-validation, where each fold includes hyper-pa
 
 # Run
 To make it run properly, clone this repository in a folder.
-From your command line, go to ClassifyCryScreamSpeech/code folder and run the following python scripts:
+From your command line, go to `ClassifyCryScreamSpeech/code` folder and run the following Python scripts:
 
 ``` python
 # Run training using the configuration file

@@ -2,7 +2,7 @@ main_config:
     run_name: 'test_run' 
     GPU_id: '0'
     scripts_replace: True # if the scripts files already in the destination folder, replace them with the new or not
-    rec_list_yaml: 'recs_ann_CS_10_2.yaml' 
+    rec_list_yaml: 'recs_list_filename.yaml' 
        
     vocal_segment_config:
         generate: False  # [True, False]

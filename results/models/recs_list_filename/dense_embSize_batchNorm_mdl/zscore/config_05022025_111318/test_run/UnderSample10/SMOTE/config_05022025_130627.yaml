@@ -1,0 +1,90 @@
+main_config:
+  run_name: test_run
+  GPU_id: '0'
+  scripts_replace: true
+  rec_list_yaml: recs_ann_CS_10_2.yaml
+  vocal_segment_config:
+    generate: false
+    plot_statistics: false
+    speakers:
+    - Child
+    speakers2map:
+      ChildEcholalia: Child
+      Therapist2: Therapist
+    frame_length: 0.04
+    frame_step: 0.01
+    t1: 0.05
+    t2: 0.05
+    limit_start: 0.2
+    limit_end: inf
+    replace_echolalia2speech: true
+    events_load:
+    - Cry
+    - Scream
+    - Speech
+    - Echolalia
+  data_split_config:
+    k_fold: 5
+  feature_extraction:
+    feats_type: pretrained
+    generate: false
+    save_embeddings: true
+    normalization: zscore
+    config_CB_name: ''
+    train_prec_take: 10
+    embeddings_config:
+      man_segs: true
+      n_p_keep: 1.0
+      event_type: Speech
+      model_extractor: eGeMAPSv02
+      seg_len: null
+      min_seg_len: 0.2
+      feat_pool: avg
+      embedding_size: null
+      hop_size: null
+      input_repr: null
+      content_type: null
+      center: null
+  tuning_params:
+    evaluate:
+    - tune
+    search_type:
+    - random
+    n_combs:
+    - 1
+    epochs:
+    - 1
+    batch_size:
+    - 16
+    - 32
+    - 64
+    learning_rate:
+    - 0.001
+    decay_rate:
+    - 0.9
+    optimizer:
+    - adam
+    num_steps_epoch:
+    - 10
+  model_config:
+    use_loaded: true
+    save_model: true
+    run_type: translearn
+    model_arc: dense_embSize_batchNorm_mdl
+    n_out: 1
+    loss: binary_crossentropy
+    act_out: sigmoid
+    early_stop:
+      evaluate: true
+      patience: 5
+    metrics:
+    - accuracy
+    use_weights_balance: true
+    mapping_class:
+      Cry: 0
+      Scream: 0
+      Speech: 1
+    convert2dummy: false
+  augment_config:
+    if_augment: true
+    augment_type: SMOTE

@@ -20,10 +20,12 @@ This algorithm classifies audio events from speech recordings into cry&scream or
    ![image](https://github.com/user-attachments/assets/81066222-4f51-4d84-b57a-4e77c6cf5bef)
 
    Each fold includes:
+   
    ![image](https://github.com/user-attachments/assets/2f1d5de7-883d-4a24-9f39-75124889c840)
 
 3. `./embeddings`: the features/embeddings as pickle files for each configuration name. The features of the same configuration names are saved in a specific folder.
    For example:
+   
    ![image](https://github.com/user-attachments/assets/8908e369-3c73-429c-aa67-37c2689c60e4)
 
 

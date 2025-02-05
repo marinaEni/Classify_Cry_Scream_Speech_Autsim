@@ -1,6 +1,6 @@
-![image](https://github.com/user-attachments/assets/0d17682f-0b1f-44c3-ad8f-e8ea80546c80)# ClassifyCryScreamSpeech
+# ClassifyCryScreamSpeech
 Classify audio events to cry&amp;scream vs speech
-
+![image](https://github.com/user-attachments/assets/0d17682f-0b1f-44c3-ad8f-e8ea80546c80)
 This algorithm classifies audio events from speech recordings into cry&scream or speech using transfer learning. The algorithm is based on features/embeddings extracted from YAMNet, VGGish, Whisper, Wav2Vec2, OpenL3, and eGeMAPs. The classifier is a multilayer perceptron with two fully connected hidden layers.
 
 ## Folders organization

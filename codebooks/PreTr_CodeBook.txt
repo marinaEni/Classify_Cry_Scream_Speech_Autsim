@@ -1,0 +1,2 @@
+config_CB_name	man_segs	n_p_keep	event_type	model_extractor	seg_len	min_seg_len	feat_pool	embedding_size	hop_size	input_repr	content_type	center
+config_05022025_111318	True	1.0	Speech	eGeMAPSv02		0.2	avg					

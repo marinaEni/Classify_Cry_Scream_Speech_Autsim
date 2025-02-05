@@ -1,0 +1,106 @@
+main_config:
+    run_name: 'test_run' 
+    GPU_id: '0'
+    scripts_replace: True # if the scripts files already in the destination folder, replace them with the new or not
+    rec_list_yaml: 'recs_ann_CS_10_2.yaml' 
+       
+    vocal_segment_config:
+        generate: False  # [True, False]
+        plot_statistics: False # if plot the figures of durations histograms and box plot of nubmer of events per class
+        speakers:
+            - 'Child'
+        speakers2map:
+            ChildEcholalia: "Child" #
+            Therapist2: "Therapist"
+        frame_length: 0.04 # in sec
+        frame_step: 0.01 # in sec
+        t1: 0.05 # in sec. the time above th1
+        t2: 0.05 # in sec. the time above th2
+        limit_start: 0.2 # in sec. # minimum length of the vocal segment
+        limit_end: inf # in sec. # maximum length of the vocal segment
+        
+        replace_echolalia2speech: True
+        events_load:
+            - "Cry"
+            - "Scream"
+            - "Speech"
+            - "Echolalia"
+
+    data_split_config:
+        k_fold: 5
+
+    feature_extraction:
+        feats_type: "pretrained" 
+        generate: False # If generate the features/embeddings even if they already exist
+        save_embeddings: True # if save the features/embeddings and replace with existing files
+        normalization: 'zscore'
+        config_CB_name: ""
+        train_prec_take: 100 # percentage of speech samples to keep in TRAIN dataset. 
+                
+        embeddings_config:
+            man_segs: True # if to use the manual segments instead of vocalizations
+            n_p_keep: 1.0 # percentage of events to keep of the WHOLE dataset. 1.0=100%, 0.1=10%
+            event_type: "Speech" # type of the event to apply the under sampling
+            model_extractor: "eGeMAPSv02" # 'yamnet', wav2vec2-base-960h, whisper-base, eGeMAPSv02, openl3, vggish
+            seg_len: # the size of vocalization to pad/trim to. yamnet: 0.975. wav2vec2, openl3, eGeMAPSv02: 1.0, whisper: 30.0
+            min_seg_len: 0.2 # the min size of trimmed vocalizations to use
+            feat_pool: "avg" # max, avg
+            embedding_size: #512. # for openl3: 512.
+            hop_size: #0.1 # for openl3
+            input_repr: #"#mel256" # for openl3
+            content_type: #"env" # for openl3. music or env
+            center: #False # for openl3. pad or not the signal beginning by 0.5s
+            
+    tuning_params:
+        evaluate: # tune or load (from existing file)
+            - 'tune'
+        search_type:
+            - 'random'
+        n_combs: # maximum number of sets of parameters to check
+            - 1
+        epochs:
+            - 1
+            # - 50
+            # - 200
+            # - 400
+        batch_size:
+            - 16
+            - 32
+            - 64
+        learning_rate:
+            - 0.001
+            # - 0.0001
+            # - 0.00001
+            # - 0.000001
+        decay_rate:
+            - 0.9
+            # - 0.95
+            # - 0.98
+        optimizer:
+            - 'adam'
+        num_steps_epoch:
+            - 10
+
+    model_config:
+        use_loaded: True
+        save_model: True
+        run_type: "translearn"
+        model_arc: 'dense_embSize_batchNorm_mdl' # architecture name
+        n_out: 1 # 1 for sigmoid, 3 for softmax
+        loss: 'binary_crossentropy'# 'binary_crossentropy' # 'categorical_crossentropy' 
+        act_out: 'sigmoid' # 'sigmoid' , 'softmax' 
+        early_stop:
+            evaluate: True
+            patience: 5
+        metrics:
+            - 'accuracy'
+        use_weights_balance: True 
+        mapping_class: 
+            Cry: 0
+            Scream: 0 # 
+            Speech: 1 # 
+        convert2dummy: False # False for sigmoid 
+
+    augment_config:
+        if_augment: True
+        augment_type: 'SMOTE'

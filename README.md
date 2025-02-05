@@ -32,6 +32,8 @@ This algorithm classifies audio events from speech recordings into cry&scream or
 ## Training
 
 This process includes 5-fold cross-validation, where each fold includes hyper-parameters tuning (learning rate, decay rate, batch size, and number of epochs), testing the best parameters on the fifth fold, and performance evaluation.
+If the user chooses to apply under-sampling (removing random Speech sample to x%), then the main run folder will be generated a folder with the results: `UnderSample<x>.`
+If the user chooses to apply over-sampling (adding synthetic samples (SMOTE) to the minority class), then the main run folder will be generated a folder with the results: `SMOTE.`
 
 
 # Run

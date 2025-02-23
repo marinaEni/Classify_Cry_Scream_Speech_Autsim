@@ -8,7 +8,7 @@ This algorithm classifies audio events from speech recordings into cry&scream or
 
 •	`./config`: the configuration files: `./config/config_trans_learn.yaml`.
 
-•	`./data`: includes:
+•	`./data`: sample data that includes:
 1. `./manual_annotations`: Excel files, one file per recording. Each file includes 4 columns: event start time, event end time, speaker, and event class. The names of the Excel files must match the recording's names.
 2. `./recs_lists`: includes .yaml file/s of list of recordings used in the process: `recs_list_filename.yaml`.
 3. `./recordings`: .wav files (16kHz) of the recordings. 

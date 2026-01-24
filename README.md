@@ -1,10 +1,10 @@
-# Classify_Cry_Scream_Speech_Autsim
+# Classify_Cry_Scream_Speech_Autism
 Classify audio events to cry&amp;scream vs speech
 
 This algorithm classifies audio events from speech recordings into cry&scream or speech using transfer learning. The algorithm is based on features/embeddings extracted from YAMNet, VGGish, Whisper, Wav2Vec2, OpenL3, and eGeMAPs. The classifier is a multilayer perceptron with two fully connected hidden layers.
 
 ## Folders organization
-•	`./code`: python files used to train and test the model (`.code/main_event_classify.py`) using 5-fold cross-validation.
+•	`./code`: Python files used to train and test the model (`.code/main_event_classify.py`) using 5-fold cross-validation.
 
 •	`./config`: the configuration files: `./config/config_trans_learn.yaml`.
 
@@ -13,7 +13,7 @@ This algorithm classifies audio events from speech recordings into cry&scream or
 2. `./recs_lists`: includes .yaml file/s of list of recordings used in the process: `recs_list_filename.yaml`.
 3. `./recordings`: .wav files (16kHz) of the recordings. 
 
-•	`./codebooks`: include a txt file with the features configurations codebook. Each new configuration receives a name: "config_<date today>_<time now>"
+•	`./codebooks`: include a txt file with the features configuration codebook. Each new configuration receives a name: "config_<date today>_<time now>"
 
 •	`./results`: includes:
 1. `./models`: the trained models for each fold. For example:
@@ -32,12 +32,12 @@ This algorithm classifies audio events from speech recordings into cry&scream or
 ## Training
 
 This process includes 5-fold cross-validation, where each fold includes hyper-parameters tuning (learning rate, decay rate, batch size, and number of epochs), testing the best parameters on the fifth fold, and performance evaluation.
-If the user chooses to apply under-sampling (removing random Speech sample to x%), then the main run folder will be generated a folder with the results: `UnderSample<x>.`
-If the user chooses to apply over-sampling (adding synthetic samples (SMOTE) to the minority class), then the main run folder will be generated a folder with the results: `SMOTE.`
+If the user chooses to apply under-sampling (removing random Speech sample to x%), then the main run folder will generate a folder with the results: `UnderSample<x>.`
+If the user chooses to apply over-sampling (adding synthetic samples (SMOTE) to the minority class), then the main run folder will generate a folder with the results: `SMOTE.`
 
 
 # Run
-To make it run properly, clone this repository in a folder.
+To make it run properly, clone this repository into a folder.
 From your command line, go to `ClassifyCryScreamSpeech/code` folder and run the following Python scripts:
 
 ``` python

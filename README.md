@@ -38,7 +38,7 @@ If the user chooses to apply over-sampling (adding synthetic samples (SMOTE) to 
 
 # Run
 To make it run properly, clone this repository into a folder.
-From your command line, go to `ClassifyCryScreamSpeech/code` folder and run the following Python scripts:
+From your command line, go to `Classify_Cry_Scream_Speech_Autism/code` folder and run the following Python scripts:
 
 ``` python
 # Run training using the configuration file
